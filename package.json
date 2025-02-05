@@ -1,0 +1,44 @@
+{
+  "name": "cook",
+  "type": "module",
+  "private": true,
+  "packageManager": "pnpm@9.15.4",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "prepare": "simple-git-hooks",
+    "up": "taze latest -I -f",
+    "prepublishOnly": "pnpm build",
+    "release": "bumpp && pnpm publish",
+    "prettier": "prettier --write .",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "nuxt": "^3.15.4",
+    "vue-router": "latest"
+  },
+  "devDependencies": {
+    "@ayingott/eslint-config": "^1.4.10",
+    "@ayingott/prettier-config": "^1.2.9",
+    "bumpp": "^10.0.1",
+    "eslint": "^9.19.0",
+    "lint-staged": "^15.4.3",
+    "prettier": "^3.4.2",
+    "simple-git-hooks": "^2.11.1",
+    "taze": "^18.4.0",
+    "vue": "^3.5.13"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged"
+  },
+  "lint-staged": {
+    "*": [
+      "eslint --fix",
+      "prettier --write --ignore-unknown"
+    ]
+  },
+  "prettier": "@ayingott/prettier-config"
+}
